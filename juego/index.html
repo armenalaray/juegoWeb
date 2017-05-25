@@ -12,19 +12,70 @@
 		
 	</head>
 	<body>
-		<canvas id="myCanvas" width="200" height="100" style="border:1px solid #c3c3c3;">
-			Your browser does not support the canvas element.
-		</canvas>
 	
+					<canvas id="myCanvas" width="900px" height="900px" style="border:1px solid #c3c3c3;">
+						Your browser does not support the canvas element.
+					</canvas>
+				
+
 	<!--JQuery-->
 		<script src="jQuery/jquery.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		
 		<script>
-			var canvas = document.getElementById("myCanvas");
-			var ctx = canvas.getContext("2d");
-			ctx.fillStyle = "#FF0000";
-			ctx.fillRect(0,0,150,75);
+		
+			var canvas = $("#myCanvas")[0];
+			var ctx = canvas.getContext('2d');
+			
+			//create gradient
+			//var grd=ctx.createLinearGradient(0,900,0,0);
+			
+			var grd=ctx.createRadialGradient(450,450,10,450,450,700);
+			grd.addColorStop(0, "black");
+			grd.addColorStop(1,"white");
+			
+			//create rectangle
+			ctx.fillStyle = grd;
+			ctx.fillRect(0,0,900,900);
+			
+			
+			//TRANSLATION -aqui empiezan los calculos del pendulo doble
+			ctx.translate(450,450);
+			//draws circle
+			ctx.beginPath();
+			ctx.arc(0,0,20,0,2*Math.PI);
+			ctx.fillStyle = "red";
+			ctx.fill();
+			ctx.lineWidth = 2;
+			ctx.strokeStyle = "white";
+			ctx.stroke();
+			
+			//draws line
+			ctx.beginPath();
+			ctx.moveTo(0,0);
+			ctx.lineTo(200,100);
+			ctx.lineWidth = 2;
+			ctx.strokeStyle = "white";
+			ctx.stroke();
+			
+			//draws circle
+			ctx.beginPath();
+			ctx.arc(200,100,20,0,2*Math.PI);
+			ctx.fillStyle = "red";
+			ctx.fill();
+			ctx.lineWidth = 2;
+			ctx.strokeStyle = "white";
+			ctx.stroke();
+			
+			//draws line
+			ctx.beginPath();
+			ctx.moveTo(200,100);
+			ctx.lineTo(200,300);
+			ctx.lineWidth = 2;
+			ctx.strokeStyle = "white";
+			ctx.stroke();
+	
+		
 		</script>
 	</body>
 </html>

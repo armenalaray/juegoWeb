@@ -1,0 +1,14 @@
+body, html{
+	height:100%;
+}
+
+#myCanvas {
+    position: relative;
+    top: 3%;
+    left: 25%;
+    /* width: 50%; */
+    /* height: 50%; */
+    /* margin: 0% 25%; */
+    /* margin-top: 14%; */
+    /* margin-left: 25%; */
+}
