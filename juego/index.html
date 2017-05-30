@@ -21,14 +21,20 @@
 	<!--JQuery-->
 		<script src="jQuery/jquery.js"></script>
 		<script src="js/bootstrap.min.js"></script>
-		<script src="pendulo.js></script>
-		<script src="pendulo.js></script>
+		<script src="pendulo.js"></script>
+		<script src="penduloDoble.js"></script>
 		
 		<script>
-		$(document).ready(function(){
+		//$(document).ready(function(){
 			var canvas = $("#myCanvas")[0];
 			var ctx = canvas.getContext('2d');
 			
+			var DoublePendulum = new PenduloDoble(90.0,0.0,1.0,100.0,90.0,0.0,1.0,100.0, ctx);
+			
+			var game = { };
+			game.fps=50;
+			
+			//var nIntervId;
 			//create gradient
 			//var grd=ctx.createLinearGradient(0,900,0,0);
 			
@@ -52,6 +58,11 @@
 			ctx.strokeStyle = "white";
 			ctx.stroke();
 			
+			
+			game.intervalId = setInterval(DoublePendulum.SetPendulumsPos,100);
+			
+			
+			/*
 			//draws line
 			ctx.beginPath();
 			ctx.moveTo(0,0);
@@ -75,9 +86,9 @@
 			ctx.lineTo(200,300);
 			ctx.lineWidth = 2;
 			ctx.strokeStyle = "white";
-			ctx.stroke();
+			ctx.stroke();*/
 		
-		});
+		//});
 			
 	
 		

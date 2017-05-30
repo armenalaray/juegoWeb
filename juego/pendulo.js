@@ -6,7 +6,7 @@ function Pendulo(_angle,_w, _mass, _length){
 	this.angle = _angle;
 	this.mass = _mass;
 	this.length = _length;
-	this.radius = 0.25;
+	this.radius = 20;
 	this.wNext =0;
 	this.angleNext = 0;
 	this.x = 0;
@@ -15,35 +15,35 @@ function Pendulo(_angle,_w, _mass, _length){
 	//methods
 	//getters
 	this.GetW = function() {
-		return w;
+		return this.w;
 	};
 	
 	this.GetWNext = function(){
-		return wNext;
+		return this.wNext;
 	};
 	
 	this.GetAngle = function(){
-		return angle;
+		return this.angle;
 	};
 	
 	this.GetAngleNext = function(){
-		return angleNext;
+		return this.angleNext;
 	};
 	
 	this.GetMass = function(){
-		return mass;
+		return this.mass;
 	};
 	
 	this.GetLength = function(){
-		return length;
+		return this.length;
 	};
 	
 	this.GetX = function(){
-		return x;
+		return this.x;
 	};
 	
 	this.GetY = function(){
-		return y;
+		return this.y;
 	};
 	//setters
 	this.SetW = function(_w){
@@ -75,24 +75,40 @@ function Pendulo(_angle,_w, _mass, _length){
 		if(typeof _anguloNext1Pendulo !== "undefined" && typeof _length1Pendulo !== "undefined"){
 			//segundo pendulo
 			this.x = (_length1Pendulo * Math.sin(_anguloNext1Pendulo)) + (this.length * Math.sin(this.angleNext));
+			//console.log("x2: " + this.x);
 		}	
 		else{
 			//primer pendulo
 			this.x = this.length * Math.sin(this.angleNext);
+			//console.log("x1: " + this.x);
 		}	
-	}
+	};
 	
 	this.CalcY = function(_anguloNext1Pendulo, _length1Pendulo){
 		if(typeof _anguloNext1Pendulo !== "undefined" && typeof _length1Pendulo !== "undefined"){
 			//segundo pendulo
 			this.y = -(_length1Pendulo * Math.cos(_anguloNext1Pendulo)) - (this.length * Math.cos(this.angleNext));
+			//console.log("y2: " + this.x);
 		}	
 		else{
 			//primer pendulo
 			this.y = -(this.length * Math.cos(this.angleNext));
+			//console.log("y1: " + this.x);
 		}	
-	}
+	};
+	
+	this.DrawSphere = function(ctx){
+		ctx.beginPath();
+		ctx.arc(this.x,this.y,this.radius,0,2*Math.PI);
+		ctx.fillStyle = "red";
+		ctx.fill();
+		ctx.lineWidth = 2;
+		ctx.strokeStyle = "white";
+		ctx.stroke();
+		
+	};
 }
+
 
 
 
