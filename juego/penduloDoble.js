@@ -38,7 +38,7 @@ function PenduloDoble(_angle1,_w1,_mass1,_length1,_angle2,_w2,_mass2,_length2, _
 
 	this.SetPendulumsPos = function(){
 		//var myObject = this.CalcNextW1.call(myObject);
-		this.CalcNextW1();
+		PenduloDoble.prototype.CalcNextW1;
 		this.CalcNextTeta1();
 		this.CalcNextW2();
 		this.CalcNextTeta2();
