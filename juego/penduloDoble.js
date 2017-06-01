@@ -1,11 +1,11 @@
-function PenduloDoble(_angle1,_w1,_mass1,_length1,_angle2,_w2,_mass2,_length2, _ctx){
+function PenduloDoble(_p1,_p2, _ctx){
 	//variables
-	this.p1 = new Pendulo(_angle1,_w1,_mass1,_length1);
-	this.p2 = new Pendulo(_angle2,_w2,_mass2,_length2);
+	this.p1 = _p1;
+	this.p2 = _p2;
 	var p1Mass = this.p1.GetMass();
 	this.mu = (p1Mass + this.p2.GetMass()) / p1Mass;
-	this.H = 0.09;
-	this.G = 9.780326;
+	this.H = 0.05;
+	this.G = -9.780326;
 	this.ctx = _ctx;
 	
 	//methods
@@ -38,7 +38,28 @@ function PenduloDoble(_angle1,_w1,_mass1,_length1,_angle2,_w2,_mass2,_length2, _
 
 	this.SetPendulumsPos = function(){
 		//var myObject = this.CalcNextW1.call(myObject);
-		PenduloDoble.prototype.CalcNextW1;
+		this.ctx.clearRect(-450,-300,900,900);
+		
+		var grd=this.ctx.createRadialGradient(0,0,10,0,0,700);
+			grd.addColorStop(0, "black");
+			grd.addColorStop(1,"white");
+			
+			//create rectangle
+			this.ctx.fillStyle = grd;
+			this.ctx.fillRect(-450,-300,900,900);
+		
+		//draws circle
+			this.ctx.beginPath();
+			this.ctx.arc(0,0,20,0,2*Math.PI);
+			this.ctx.fillStyle = "red";
+			this.ctx.fill();
+			this.ctx.lineWidth = 2;
+			this.ctx.strokeStyle = "white";
+			this.ctx.stroke();
+			
+			
+		
+		this.CalcNextW1();
 		this.CalcNextTeta1();
 		this.CalcNextW2();
 		this.CalcNextTeta2();

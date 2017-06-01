@@ -13,9 +13,12 @@
 	</head>
 	<body>
 	
-					<canvas id="myCanvas" width="900px" height="900px" style="border:1px solid #c3c3c3;">
-						Your browser does not support the canvas element.
-					</canvas>
+		<canvas id="myCanvas" width="900px" height="900px" style="border:1px solid #c3c3c3;">
+			Your browser does not support the canvas element.
+		</canvas>
+		
+		</canvas>
+					
 				
 
 	<!--JQuery-->
@@ -25,43 +28,34 @@
 		<script src="penduloDoble.js"></script>
 		
 		<script>
+		function myFunc(){
+		
+		}
+		
 		//$(document).ready(function(){
 			var canvas = $("#myCanvas")[0];
 			var ctx = canvas.getContext('2d');
 			
-			var DoublePendulum = new PenduloDoble(90.0,0.0,1.0,100.0,90.0,0.0,1.0,100.0, ctx);
 			
-			var game = { };
-			game.fps=50;
+			var p1 = new Pendulo(90.0,0.0,20.0,200.0);
+			var p2 = new Pendulo(90.0,0.0,20.0,200.0);
+			
+			var DoublePendulum = new PenduloDoble(p1,p2,ctx);
+			
 			
 			//var nIntervId;
 			//create gradient
 			//var grd=ctx.createLinearGradient(0,900,0,0);
 			
-			var grd=ctx.createRadialGradient(450,450,10,450,450,700);
-			grd.addColorStop(0, "black");
-			grd.addColorStop(1,"white");
-			
-			//create rectangle
-			ctx.fillStyle = grd;
-			ctx.fillRect(0,0,900,900);
-			
 			
 			//TRANSLATION -aqui empiezan los calculos del pendulo doble
-			ctx.translate(450,450);
-			//draws circle
-			ctx.beginPath();
-			ctx.arc(0,0,20,0,2*Math.PI);
-			ctx.fillStyle = "red";
-			ctx.fill();
-			ctx.lineWidth = 2;
-			ctx.strokeStyle = "white";
-			ctx.stroke();
+			ctx.translate(450,300);
 			
 			
-			game.intervalId = setInterval(DoublePendulum.SetPendulumsPos,100);
 			
 			
+			
+			setInterval(function(){ DoublePendulum.SetPendulumsPos(); }, 10);
 			/*
 			//draws line
 			ctx.beginPath();
