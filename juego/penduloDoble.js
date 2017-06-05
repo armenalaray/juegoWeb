@@ -73,7 +73,7 @@ function PenduloDoble(_p1,_p2, _ctx){
 		this.p2.DrawSphere(this.ctx);
 		this.DrawLines();
 		
-		console.log(this.p1.GetAngle());
+		//console.log(this.p1.GetAngle());
 		/*glBegin(GL_LINE_LOOP);
 		glColor3f(0.0f, 1.0f, 1.0f);
 		glVertex2d(p2.GetX(), p2.GetY());

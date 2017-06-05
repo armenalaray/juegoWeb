@@ -26,13 +26,13 @@
 		<script src="js/bootstrap.min.js"></script>
 		<script src="pendulo.js"></script>
 		<script src="penduloDoble.js"></script>
+		<script src="bar.js"></script>
+		<script src="barArray.js"></script>
 		
 		<script>
-		function myFunc(){
 		
-		}
 		
-		//$(document).ready(function(){
+		$(document).ready(function(){
 			var canvas = $("#myCanvas")[0];
 			var ctx = canvas.getContext('2d');
 			
@@ -40,9 +40,11 @@
 			var p1 = new Pendulo(90.0,0.0,1.0,200.0);
 			var p2 = new Pendulo(90.0,0.0,1.0,200.0);
 			
-			var DoublePendulum = new PenduloDoble(p1,p2,ctx);
+			var doublePendulum = new PenduloDoble(p1,p2,ctx);
 			
-			
+			//var widthCanvas = $("#myCanvas").attr("width");
+			var barras = new BarArray(canvas.width, -450,ctx);
+			barras.initialize(6,6);
 			//var nIntervId;
 			//create gradient
 			//var grd=ctx.createLinearGradient(0,900,0,0);
@@ -55,9 +57,12 @@
 			
 			
 			
-			setInterval(function(){ DoublePendulum.SetPendulumsPos(); }, 10);
+			var interval = setInterval(function(){ 
+				doublePendulum.SetPendulumsPos();
+				barras.moveBars();			
+			}, 10);
 			
-			
+			//var interval2 = setInterval(function(){  }, 10);
 			
 			/*
 			//draws line
@@ -85,7 +90,7 @@
 			ctx.strokeStyle = "white";
 			ctx.stroke();*/
 		
-		//});
+		});
 			
 	
 		
