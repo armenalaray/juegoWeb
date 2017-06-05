@@ -37,8 +37,8 @@
 			var ctx = canvas.getContext('2d');
 			
 			
-			var p1 = new Pendulo(90.0,0.0,20.0,200.0);
-			var p2 = new Pendulo(90.0,0.0,20.0,200.0);
+			var p1 = new Pendulo(90.0,0.0,1.0,200.0);
+			var p2 = new Pendulo(90.0,0.0,1.0,200.0);
 			
 			var DoublePendulum = new PenduloDoble(p1,p2,ctx);
 			
@@ -56,6 +56,9 @@
 			
 			
 			setInterval(function(){ DoublePendulum.SetPendulumsPos(); }, 10);
+			
+			
+			
 			/*
 			//draws line
 			ctx.beginPath();
