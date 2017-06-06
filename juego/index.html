@@ -28,7 +28,8 @@
 		<script src="penduloDoble.js"></script>
 		<script src="bar.js"></script>
 		<script src="barArray.js"></script>
-		
+		<script src="box.js"></script>
+		<script src="gameManager.js"></script>
 		<script>
 		
 		
@@ -45,6 +46,12 @@
 			//var widthCanvas = $("#myCanvas").attr("width");
 			var barras = new BarArray(canvas.width, -450,ctx);
 			barras.initialize(6,6);
+			
+			var gameManager = new GameManager(-400, ctx);
+			gameManager.initialize(7);
+			
+			
+		
 			//var nIntervId;
 			//create gradient
 			//var grd=ctx.createLinearGradient(0,900,0,0);
@@ -58,8 +65,11 @@
 			
 			
 			var interval = setInterval(function(){ 
+				
 				doublePendulum.SetPendulumsPos();
-				barras.moveBars();			
+				gameManager.drawBoxes();
+				barras.moveBars();	
+				
 			}, 10);
 			
 			//var interval2 = setInterval(function(){  }, 10);
