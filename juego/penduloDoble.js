@@ -4,7 +4,7 @@ function PenduloDoble(_p1,_p2, _ctx){
 	this.p2 = _p2;
 	var p1Mass = this.p1.GetMass();
 	this.mu = (p1Mass + this.p2.GetMass()) / p1Mass;
-	this.H = 0.05;
+	this.H = 0.04;
 	this.G = -9.780326;
 	this.ctx = _ctx;
 	

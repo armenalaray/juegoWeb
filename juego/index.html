@@ -56,13 +56,14 @@
 			//create gradient
 			//var grd=ctx.createLinearGradient(0,900,0,0);
 			
+			$("#myCanvas").on("click", function(){
+				//cuando se le de click al canvas se soltara una bolita.
+				
+				
+			});
 			
 			//TRANSLATION -aqui empiezan los calculos del pendulo doble
 			ctx.translate(450,300);
-			
-			
-			
-			
 			
 			var interval = setInterval(function(){ 
 				
@@ -71,6 +72,8 @@
 				barras.moveBars();	
 				
 			}, 10);
+			
+			
 			
 			//var interval2 = setInterval(function(){  }, 10);
 			
