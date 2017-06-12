@@ -38,7 +38,7 @@ function PenduloDoble(_p1,_p2, _ctx){
 
 	this.SetPendulumsPos = function(){
 		//var myObject = this.CalcNextW1.call(myObject);
-		this.ctx.clearRect(-450,-300,900,900);
+		
 		
 		var grd=this.ctx.createRadialGradient(0,0,10,0,0,700);
 			grd.addColorStop(0, "black");
@@ -57,7 +57,7 @@ function PenduloDoble(_p1,_p2, _ctx){
 			this.ctx.strokeStyle = "white";
 			this.ctx.stroke();
 			
-			
+		
 		
 		this.CalcNextW1();
 		this.CalcNextTeta1();

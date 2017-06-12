@@ -47,7 +47,7 @@
 			var barras = new BarArray(canvas.width, -450,ctx);
 			barras.initialize(6,6);
 			
-			var gameManager = new GameManager(-400, ctx);
+			var gameManager = new GameManager(-400, ctx,canvas.width);
 			gameManager.initialize(7);
 			
 			
@@ -58,18 +58,22 @@
 			
 			$("#myCanvas").on("click", function(){
 				//cuando se le de click al canvas se soltara una bolita.
-				
-				
+				gameManager.instanceGameBox(p2.GetX(), p2.GetY());
+				console.log(gameManager.gameBoxes);
 			});
 			
 			//TRANSLATION -aqui empiezan los calculos del pendulo doble
 			ctx.translate(450,300);
 			
 			var interval = setInterval(function(){ 
-				
+				ctx.clearRect(-450,-300,900,900);
+				//points
+		
 				doublePendulum.SetPendulumsPos();
 				gameManager.drawBoxes();
+				gameManager.boxFall();
 				barras.moveBars();	
+				
 				
 			}, 10);
 			

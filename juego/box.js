@@ -5,10 +5,10 @@ function Box(_x0,_y0,_width, _height, _ctx , _canvasheight){
 	this.height = _height;
 	
 	this.G = -9.780326; 
-	this.t = .0;
+	this.t = 0;
 	//this.imagen = _imagen;
 	this.ctx = _ctx;
-	
+	var yTemp = 0;
 	
 	this.setPosition = function(_x,_y){
 		this.x0 = _x;
@@ -33,8 +33,9 @@ function Box(_x0,_y0,_width, _height, _ctx , _canvasheight){
 	};*/
 	
 	this.movement = function(){
-		this.t += .01;
-		this.y0 = .5 * this.G * Math.pow(this.t,2);
+		this.t += .001;
+		yTemp += .5 * this.G * Math.pow(this.t,2);
+		this.y0 += -yTemp; 
 		//this.drawImage();
 	};
 }
