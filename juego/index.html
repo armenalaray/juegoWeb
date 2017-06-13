@@ -44,11 +44,11 @@
 			var doublePendulum = new PenduloDoble(p1,p2,ctx);
 			
 			//var widthCanvas = $("#myCanvas").attr("width");
-			var barras = new BarArray(canvas.width, -450,ctx);
-			barras.initialize(6,6);
 			
-			var gameManager = new GameManager(-400, ctx,canvas.width);
-			gameManager.initialize(7);
+			//barras.initialize(6,6);
+			
+			var gameManager = new GameManager(-400, ctx,canvas.height,canvas.width);
+			gameManager.initialize(7, 6);
 			
 			
 		
@@ -70,9 +70,7 @@
 				//points
 		
 				doublePendulum.SetPendulumsPos();
-				gameManager.drawBoxes();
-				gameManager.boxFall();
-				barras.moveBars();	
+				gameManager.gameLoop();
 				
 				
 			}, 10);
