@@ -2,8 +2,8 @@ function GameManager(_xOrigin, _ctx, _canvasHeight, _canvasWidth){
 	this.G = 9.780326;
 	this.uiBoxes = [];
 	this.gameBoxes = [];
+	this.uiPositions = [];
 	this.gameEnd = false;
-	
 	this.score = 0;
 	this.pointRange = [];
 	this.ctx = _ctx;
@@ -18,7 +18,7 @@ function GameManager(_xOrigin, _ctx, _canvasHeight, _canvasWidth){
 	
 	this.initialize = function(_boxlength,  _barSize){
 		for(var i = 0; i < _boxlength; i++){
-			this.uiBoxes[i] = new Box(_xOrigin + (i * 100), -200,30,30,this.ctx, _canvasHeight);
+			this.uiBoxes[i] = new Box(_xOrigin + (i * 100), -200,30,30,this.ctx, canvasHeight);
 		}
 		this.barras.initialize(_barSize,_barSize);
 		//this.gameBoxes[0] = 0;
@@ -33,16 +33,17 @@ function GameManager(_xOrigin, _ctx, _canvasHeight, _canvasWidth){
 	};
 	this.boxFall = function(){
 		if(this.gameBoxes.length != 0){
+			this.checkBoxCatched();
 			for(var i = 0; i < this.gameBoxes.length; i++){
-				if (this.gameBoxes[i].getY() < _canvasHeight){
+				if (this.gameBoxes[i].getY() < canvasHeight){
 					this.gameBoxes[i].movement();
 					this.gameBoxes[i].drawImage();
 				}
 				else{
 					this.gameBoxes.pop();
+					this.uiPositions.pop();
 				}
 			}
-			this.checkBoxCatched();
 		}
 	};
 	
@@ -54,13 +55,19 @@ function GameManager(_xOrigin, _ctx, _canvasHeight, _canvasWidth){
 		if(this.gameBoxes.length > 0){
 			for (var j = 0; j < this.gameBoxes.length; j++){
 				for(var i = 0; i < this.barras.bars.length; i++){
-					if((this.gameBoxes[j].y0 + this.gameBoxes[j].height)>= this.barras.bars[i].y0){
+					if((this.gameBoxes[j].y0 + this.gameBoxes[j].height)>= this.barras.bars[i].y0 && (this.gameBoxes[j].y0 + this.gameBoxes[j].height) < canvasHeight - 300){
 						//la caja esta a la altura de la barra
-						if(this.gameBoxes[j].x0 >= this.barras.bars[i].x0 && this.gameBoxes[j].x0 <= (this.barras.bars[i].x0 + this.barras.bars[i].length) - this.gameBoxes[j].width){
+						if(this.gameBoxes[j].x0 >= this.barras.bars[i].x0 && this.gameBoxes[j].x0 + this.gameBoxes[j].width <= (this.barras.bars[i].x0 + this.barras.bars[i].length)){
 							//esta tocando la barra planamente
 							this.score += 10;
 							//se cambia la posicion del gameBoxe
+							
 							var boxTemp = this.gameBoxes.pop();
+							//boxTemp.setPosition(
+							
+							this.uiBoxes.push(this.uiPositions.pop());
+							//console.log(this.uiBoxes);
+							
 							break;
 							//boxTemp.x0 = 
 						}
@@ -85,9 +92,10 @@ function GameManager(_xOrigin, _ctx, _canvasHeight, _canvasWidth){
 	this.instanceGameBox = function(x,y){
 		if(this.uiBoxes.length > 0){
 			var boxTemp = this.uiBoxes.pop();
-			boxTemp.x0 = x;
-			boxTemp.y0 = y;
-			this.gameBoxes.unshift(boxTemp);//añade elemento al principio 
+			this.uiPositions.unshift(boxTemp);
+			console.log(this.uiPositions);
+			this.gameBoxes.unshift(new Box(x,y,30,30,this.ctx,canvasHeight));//añade elemento al principio 
+			console.log(this.gameBoxes);
 		}
 	};
 	

@@ -12,6 +12,11 @@
 		
 	</head>
 	<body>
+	<audio controls>
+		<source src="Audio/Motion.wav" type="audio/wav">	
+		<!--<source src="horse.mp3" type="audio/mpeg">-->
+		Your browser does not support the audio element.
+		</audio>
 	
 		<canvas id="myCanvas" width="900px" height="900px" style="border:1px solid #c3c3c3;">
 			Your browser does not support the canvas element.
@@ -26,6 +31,7 @@
 		<script src="js/bootstrap.min.js"></script>
 		<script src="pendulo.js"></script>
 		<script src="penduloDoble.js"></script>
+		<script src="position.js"></script>
 		<script src="bar.js"></script>
 		<script src="barArray.js"></script>
 		<script src="box.js"></script>
@@ -59,7 +65,7 @@
 			$("#myCanvas").on("click", function(){
 				//cuando se le de click al canvas se soltara una bolita.
 				gameManager.instanceGameBox(p2.GetX(), p2.GetY());
-				console.log(gameManager.gameBoxes);
+				//console.log(gameManager.gameBoxes);
 			});
 			
 			//TRANSLATION -aqui empiezan los calculos del pendulo doble
