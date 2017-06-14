@@ -86,7 +86,6 @@ function GameManager(_xOrigin, _ctx, _canvasHeight, _canvasWidth){
 		this.drawPoints(); // score
 		this.barras.moveBars();	//movimiento de barras
 		
-		
 	}
 	
 	this.instanceGameBox = function(x,y){

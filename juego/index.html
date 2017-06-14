@@ -12,7 +12,7 @@
 		
 	</head>
 	<body>
-	<audio controls>
+		<audio id="audio" controls preload="none">
 		<source src="Audio/Motion.wav" type="audio/wav">	
 		<!--<source src="horse.mp3" type="audio/mpeg">-->
 		Your browser does not support the audio element.
@@ -22,7 +22,7 @@
 			Your browser does not support the canvas element.
 		</canvas>
 		
-		</canvas>
+		
 					
 				
 
@@ -40,6 +40,9 @@
 		
 		
 		$(document).ready(function(){
+			$("#audio").trigger('load');
+			
+			$("#audio").trigger('play');
 			var canvas = $("#myCanvas")[0];
 			var ctx = canvas.getContext('2d');
 			
