@@ -18,11 +18,11 @@
 		Your browser does not support the audio element.
 		</audio>
 	
-		<canvas id="myCanvas" width="900px" height="900px" style="border:1px solid #c3c3c3;">
+		<canvas id="myCanvas" width="900px" height="900px" style="border:1px solid #c3c3c3;" >
 			Your browser does not support the canvas element.
 		</canvas>
 		
-		
+		<button id="restart" >Restart</button>
 					
 				
 
@@ -42,10 +42,10 @@
 		$(document).ready(function(){
 			$("#audio").trigger('load');
 			
-			$("#audio").trigger('play');
+			//$("#audio").trigger('play');
 			var canvas = $("#myCanvas")[0];
 			var ctx = canvas.getContext('2d');
-			
+			var isPaused = false;
 			
 			var p1 = new Pendulo(90.0,0.0,1.0,200.0);
 			var p2 = new Pendulo(90.0,0.0,1.0,200.0);
@@ -70,21 +70,56 @@
 				gameManager.instanceGameBox(p2.GetX(), p2.GetY());
 				//console.log(gameManager.gameBoxes);
 			});
-			
+			var gameOver;
 			//TRANSLATION -aqui empiezan los calculos del pendulo doble
 			ctx.translate(450,300);
 			
 			var interval = setInterval(function(){ 
 				ctx.clearRect(-450,-300,900,900);
-				//points
-		
 				doublePendulum.SetPendulumsPos();
-				gameManager.gameLoop();
+				if(gameManager.gameLoop()){
+					$("#restart").css("visibility","visible");
+				}
 				
 				
 			}, 10);
 			
+			$(document).keypress(function(event){
+				var x = event.which;
+				console.log(x);
+				if(x==112){
+					if(!isPaused){
+						//triggers pause
+						pauseGame();
+						
+					}
+					else{
+						interval = setInterval(function(){ 
+						ctx.clearRect(-450,-300,900,900);
+						//points
+				
+						doublePendulum.SetPendulumsPos();
+						gameManager.gameLoop();
+						
+						
+						}, 10);
+						
+					}
+					isPaused = !isPaused;
+				}
+			});
 			
+			$("#restart").click(function(){
+				location.reload();
+			});
+			/*function getKeyPressed(event){
+				var x = event.which || event.KeyCode;
+				
+			}*/
+			
+			function pauseGame(){
+				clearInterval(interval);
+			}
 			
 			//var interval2 = setInterval(function(){  }, 10);
 			

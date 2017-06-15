@@ -14,7 +14,7 @@ function GameManager(_xOrigin, _ctx, _canvasHeight, _canvasWidth){
 	var xOrigin = _xOrigin;
 	var uiPosTempX = 0;
 	var uiPosTempY = 0;
-	
+	var gameOver = false;
 	
 	this.initialize = function(_boxlength,  _barSize){
 		for(var i = 0; i < _boxlength; i++){
@@ -26,10 +26,10 @@ function GameManager(_xOrigin, _ctx, _canvasHeight, _canvasWidth){
 	};
 	
 	this.drawBoxes = function(){
-		for(var i = 0; i < this.uiBoxes.length; i++){
-			this.uiBoxes[i].drawImage();
-		}
 		
+			for(var i = 0; i < this.uiBoxes.length; i++){
+				this.uiBoxes[i].drawImage();
+			}		
 	};
 	this.boxFall = function(){
 		if(this.gameBoxes.length != 0){
@@ -42,6 +42,10 @@ function GameManager(_xOrigin, _ctx, _canvasHeight, _canvasWidth){
 				else{
 					this.gameBoxes.pop();
 					this.uiPositions.pop();
+					if(this.uiBoxes.length == 0){
+						//ya no hay boxes;
+						gameOver = true;
+					}
 				}
 			}
 		}
@@ -85,16 +89,20 @@ function GameManager(_xOrigin, _ctx, _canvasHeight, _canvasWidth){
 		this.boxFall(); //movimiento de caja
 		this.drawPoints(); // score
 		this.barras.moveBars();	//movimiento de barras
-		
+		if(gameOver && this.gameBoxes.length == 0 && this.uiBoxes.length == 0){
+			this.gameOver();
+			return true;
+		}
+		return false;
 	}
 	
 	this.instanceGameBox = function(x,y){
 		if(this.uiBoxes.length > 0){
 			var boxTemp = this.uiBoxes.pop();
 			this.uiPositions.unshift(boxTemp);
-			console.log(this.uiPositions);
+			//console.log(this.uiPositions);
 			this.gameBoxes.unshift(new Box(x,y,30,30,this.ctx,canvasHeight));//añade elemento al principio 
-			console.log(this.gameBoxes);
+			//console.log(this.gameBoxes);
 		}
 	};
 	
@@ -110,7 +118,11 @@ function GameManager(_xOrigin, _ctx, _canvasHeight, _canvasWidth){
 	};
 	
 	
-	this.checkIfGameOver = function(){
+	this.gameOver = function(){
+		this.ctx.font = "30px Arial";
+		this.ctx.fillStyle = "red";
+		this.ctx.fillText("Game Over. Your Score: "+ this.score + " Points",-230,-100);
+		
 		
 	};
 	

@@ -12,3 +12,15 @@ body, html{
     /* margin-top: 14%; */
     /* margin-left: 25%; */
 }
+
+#restart {
+    position: absolute;
+    top: 500px;
+    left: 1000px;
+    width: 200px;
+    height: 100px;
+    background-color: gray;
+    color: white;
+    font-size: 20px;
+	visibility:hidden;
+}
