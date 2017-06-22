@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-06-2017 a las 17:53:30
+-- Tiempo de generación: 22-06-2017 a las 16:14:35
 -- Versión del servidor: 5.7.14
 -- Versión de PHP: 5.6.25
 
@@ -35,13 +35,6 @@ CREATE TABLE `contenido` (
   `score` int(100) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Volcado de datos para la tabla `contenido`
---
-
-INSERT INTO `contenido` (`id`, `img`, `fontskin`, `score`) VALUES
-(1, 'img/background/background.jpg', 0, 0);
-
 -- --------------------------------------------------------
 
 --
@@ -63,7 +56,7 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`id`, `firstname`, `lastname`, `password`, `email`, `bestscore`) VALUES
 (1, 'Alejandro', 'Armenta', '1111', 'armenalaray@gmail.com', NULL),
-(2, 'SwingPop', '', '', 'eget.metus.eu@Praesent.ca', NULL),
+(2, 'Blogger', '', '', 'eget.metus.eu@Praesent.ca', NULL),
 (3, 'Bertha', 'Ayala', '1', 'baagayala@gmail.com', NULL),
 (4, 'Ana Maria', 'Armenta', '2', 'armenta.anam@gmail.com', NULL),
 (5, 'Zoe', 'Stephens', 'YrX57HqE4XR', 'in.lobortis.tellus@sitametconsectetuer.org', NULL),
@@ -125,7 +118,7 @@ ALTER TABLE `usuariocontenido`
 -- AUTO_INCREMENT de la tabla `contenido`
 --
 ALTER TABLE `contenido`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --

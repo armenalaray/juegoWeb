@@ -103,7 +103,7 @@ function Pendulo(_angle,_w, _mass, _length){
 		ctx.fillStyle = "red";
 		ctx.fill();
 		ctx.lineWidth = 2;
-		ctx.strokeStyle = "white";
+		ctx.strokeStyle = "#4d4d4d";
 		ctx.stroke();
 		
 	};

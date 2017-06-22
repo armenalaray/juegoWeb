@@ -85,6 +85,7 @@ function GameManager(_xOrigin, _ctx, _canvasHeight, _canvasWidth){
 
 	
 	this.gameLoop = function(){
+		
 		this.drawBoxes();//ui boxes
 		this.boxFall(); //movimiento de caja
 		this.drawPoints(); // score

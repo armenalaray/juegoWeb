@@ -39,7 +39,7 @@ function PenduloDoble(_p1,_p2, _ctx){
 	this.SetPendulumsPos = function(){
 		//var myObject = this.CalcNextW1.call(myObject);
 		
-		
+		/*
 		var grd=this.ctx.createRadialGradient(0,0,10,0,0,700);
 			grd.addColorStop(0, "black");
 			grd.addColorStop(1,"white");
@@ -47,14 +47,14 @@ function PenduloDoble(_p1,_p2, _ctx){
 			//create rectangle
 			this.ctx.fillStyle = grd;
 			this.ctx.fillRect(-450,-300,900,900);
-		
+		*/
 		//draws circle
 			this.ctx.beginPath();
 			this.ctx.arc(0,0,20,0,2*Math.PI);
 			this.ctx.fillStyle = "red";
 			this.ctx.fill();
 			this.ctx.lineWidth = 2;
-			this.ctx.strokeStyle = "white";
+			this.ctx.strokeStyle = "#4d4d4d";
 			this.ctx.stroke();
 			
 		
@@ -92,7 +92,7 @@ function PenduloDoble(_p1,_p2, _ctx){
 		this.ctx.lineTo(this.p1.GetX(),this.p1.GetY());
 		this.ctx.lineTo(this.p2.GetX(),this.p2.GetY());
 		this.ctx.lineWidth = 2;
-		this.ctx.strokeStyle = "white";
+		this.ctx.strokeStyle = "#4d4d4d";
 		this.ctx.stroke();
 	};
 }
