@@ -12,19 +12,25 @@
 		
 	</head>
 	<body>
-		<audio id="audio" controls preload="none">
-			<source src="Audio/Motion.wav" type="audio/wav">	
-			<!--<source src="horse.mp3" type="audio/mpeg">-->
-			Your browser does not support the audio element.
-		</audio>
-		<img id="gameBackground" width="900px" height="900px" src="img/background/background.jpg" alt="gameBack">
-		<canvas id="myCanvas" width="900px" height="900px" style="border:1px solid #c3c3c3;" >
-			Your browser does not support the canvas element.
-		</canvas>
-		
-		<button id="restart" >Restart</button>
-					
+	<div class="container-fluid content">
+		<div class="row content">
+			<div class ="col-sm-2 sidebar">
 				
+			</div>
+			<div class="col-sm-10">
+				<audio id="audio" controls preload="none">
+					<source src="Audio/Motion.wav" type="audio/wav">	
+					<!--<source src="horse.mp3" type="audio/mpeg">-->
+					Your browser does not support the audio element.
+				</audio>
+				<img id="gameBackground" width="900px" height="900px" src="img/background/background.jpg" alt="gameBack">
+				<canvas id="myCanvas" width="900px" height="900px" style="border:1px solid #c3c3c3;" >
+					Your browser does not support the canvas element.
+				</canvas>
+				<button id="restart" >Restart</button>
+			</div>
+		</div>			
+	</div>		
 
 	<!--JQuery-->
 		<script src="jQuery/jquery.js"></script>

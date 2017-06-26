@@ -2,6 +2,15 @@ body, html{
 	height:100%;
 }
 
+.content{
+	height:100%;
+}
+
+.sidebar{
+	background-color:red;
+	height:100%;
+}
+
 #myCanvas {
     position: absolute;
     top: 3%;
@@ -12,6 +21,7 @@ body, html{
     /* margin-top: 14%; */
     /* margin-left: 25%; */
 }
+
 
 #restart {
     position: absolute;
