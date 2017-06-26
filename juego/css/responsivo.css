@@ -1,0 +1,34 @@
+
+
+
+@media (max-width: 992px) {
+.sidebar{
+		height:20%;
+}
+#myCanvas{ 
+display:none;
+
+}
+.letrero{display:block;}
+}
+@media (min-width: 993px) {
+.letrero{display:none;}
+}
+
+
+@media (max-width: 1200px) {
+
+
+#myCanvas{ 
+padding:0px;
+margin:0px;
+left:0px;
+
+}
+}
+
+@media (max-width: 420px) {
+.sidebar{
+		height:10%;
+}
+}

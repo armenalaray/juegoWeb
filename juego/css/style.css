@@ -14,13 +14,17 @@ body, html{
 #myCanvas {
     position: absolute;
     top: 3%;
-    left: 25%;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
     /* width: 50%; */
     /* height: 50%; */
     /* margin: 0% 25%; */
     /* margin-top: 14%; */
     /* margin-left: 25%; */
 }
+.realativo{ position:relative;}
 
 
 #restart {
