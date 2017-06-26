@@ -15,22 +15,40 @@
 	<body>
 	<div class="container-fluid content">
 		<div class="row content">
-			<div class ="col-md-2 col-sm-12 sidebar">
+			<div class ="col-md-3 col-sm-12 text-align-center sidebar">
+				<!--contenido sidebar-->
+				<div id="title">Swing Pop</div>
+				<div id="nombre"> Hola Alejandro</div>
+				<div id="bestScore">Best Score: 100 pts</div>
+				<div id="playerSkins"><p>Skins:</p>
+					<ul>
+						<li>img1Skin</li>
+						<li>img2Skin</li>
+						<li>img3Skin</li>
+					</ul>
+				</div>
+				<button id="modifyAccount">Modify Account</button>
+				<button id="deleteAccount">Delete Account</button>
 				
 			</div>
-			<div class="col-md-10 col-sm-12 realativo">
+			<div class="col-md-9 col-sm-12 relativo">
 			<div class="letrero"><h1>Resolucion minima de 960px, favor de redimencionar</h1></div>
-				<audio id="audio" controls preload="none">
-					<source src="Audio/Motion.wav" type="audio/wav">	
-					<!--<source src="horse.mp3" type="audio/mpeg">-->
-					Your browser does not support the audio element.
-				</audio>
+				
 				<img id="gameBackground" width="900px" height="900px" src="img/background/background.jpg" alt="gameBack">
 				<canvas id="myCanvas" width="900px" height="900px" style="border:1px solid #c3c3c3;" >
 					Your browser does not support the canvas element.
 				</canvas>
 				<button id="restart" >Restart</button>
-				
+				<div id="nextSkin">
+					<p>Te faltan 100 ptos para next skin</p>
+				</div>
+				<div id="audio">
+					<audio controls preload="none">
+					<source src="Audio/Motion.wav" type="audio/wav">	
+					<!--<source src="horse.mp3" type="audio/mpeg">-->
+					Your browser does not support the audio element.
+				</audio>
+				</div>
 				
 			</div>
 		</div>			

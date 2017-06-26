@@ -6,11 +6,26 @@ body, html{
 	height:100%;
 }
 
-.sidebar{
-	background-color:red;
-	height:100%;
+.relativo{ position:relative;}
+/*sidebar y contenido extra del juego*/
+.sidebar {
+    background-color: red;
+    height: 100%;
+    /*text-align: center;*/
 }
 
+#nextSkin{
+	background-color:red;
+	position:fixed;
+	top:0px;
+	right:0px;
+	width:300px;
+	height:300px;
+	
+}
+
+
+/*temina extras del juego*/
 #myCanvas {
     position: absolute;
     top: 3%;
@@ -24,7 +39,6 @@ body, html{
     /* margin-top: 14%; */
     /* margin-left: 25%; */
 }
-.realativo{ position:relative;}
 
 
 #restart {
@@ -40,7 +54,12 @@ body, html{
 }
 
 #audio{
-	position:absolute;
+	position:fixed;
+	right:0px;
+	bottom:0px;
+	background-color:red;
+	width:300px;
+	height:100px;
 }
 
 #gameBackground{
