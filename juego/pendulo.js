@@ -100,7 +100,7 @@ function Pendulo(_angle,_w, _mass, _length){
 	this.DrawSphere = function(ctx){
 		ctx.beginPath();
 		ctx.arc(this.x,this.y,this.radius,0,2*Math.PI);
-		ctx.fillStyle = "red";
+		ctx.fillStyle = "#f54141";
 		ctx.fill();
 		ctx.lineWidth = 2;
 		ctx.strokeStyle = "#4d4d4d";
