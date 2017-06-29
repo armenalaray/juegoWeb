@@ -21,14 +21,15 @@ if ($result->num_rows > 0) {
 	while($row = $result->fetch_assoc()) {
 		$_SESSION["id"] = $row["id"];//id del usuario que esta conectado
 		$_SESSION["nombre"] = $row["firstname"].' '.$row["lastname"];
+		$_SESSION["bestscore"]=$row["bestscore"];
 		$_SESSION["conected"] = true;
 	}
-	header('Location:mainGame.html');
+	header('Location:mainGame.php');
 	echo "tabla encontrada";
 }
 else{
 	session_destroy();
-	//header('Location:index.php');
+	header('Location:index.php');
 	
 }
 

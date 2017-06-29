@@ -1,3 +1,7 @@
+<?php
+session_start();
+include "conexion.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -13,14 +17,23 @@
 		
 	</head>
 	<body>
-	
-		
 			<div class ="text-align-center sidebar">
 				<!--contenido sidebar-->
 				<ul>
 					<li id="title"><img src="img/swingpoplogo.png" alt="swingpoplogo" height="50%" width="60%"></li>
-					<li id="nombre"><h1><B>Hello Alejandro</B></h1></li>
-					<li id="bestScore"><h2><B>Best Score:</B> 100 pts</h2></li>
+					<?php
+						if($_SESSION['conected'] == true){
+							echo '<li id="nombre"><h1><B>Hello '.$_SESSION["nombre"].'</B></h1></li>
+							<li id="bestScore"><h2><B>Best Score:</B> '.$_SESSION["bestscore"].' pts</h2></li>
+
+							';
+						}
+						else{
+							session_destroy(); 
+							header('Location:index.php');
+						}
+					?>
+					
 					<li id="playerSkins"><h2>Skins:</h2>
 						<ul>
 							<li><img src="img/dropItems/backpack.png" alt="swingpoplogo" width="80%"></li>
