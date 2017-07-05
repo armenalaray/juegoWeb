@@ -24,7 +24,7 @@ function Bar(_x0, _y0, _length, _ctx){
 		this.ctx.beginPath();
 		this.ctx.moveTo(this.x0,this.y0);
 		this.ctx.lineTo(this.x0 + this.length,this.y0);
-		this.ctx.lineWidth = 2;
+		this.ctx.lineWidth = 7;
 		this.ctx.strokeStyle = "red";
 		this.ctx.stroke();
 	};

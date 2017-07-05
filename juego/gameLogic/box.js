@@ -19,13 +19,14 @@ function Box(_x0,_y0,_width, _height, _ctx , _canvasheight){
 		return this.y0;
 	}
 	
-	this.drawImage = function(){
-		this.ctx.beginPath();
+	this.drawImage = function(itemSelected){
+		/*this.ctx.beginPath();
 		this.ctx.lineWidth = "6";
 		this.ctx.strokeStyle = "white";
 		this.ctx.fillStyle="#FF000"
 		this.ctx.fillRect(this.x0,this.y0,this.width,this.height);
-		this.ctx.stroke();
+		this.ctx.stroke();*/
+		this.ctx.drawImage(itemSelected, this.x0, this.y0, this.width, this.height);
 	};
 	
 	/*this.checkIfGameOver=function(){

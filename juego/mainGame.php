@@ -25,23 +25,44 @@ include "conexion.php";
 						if($_SESSION['conected'] == true){
 							echo '<li id="nombre"><h1><B>Hello '.$_SESSION["nombre"].'</B></h1></li>
 							<li id="bestScore"><h2><B>Best Score:</B> '.$_SESSION["bestscore"].' pts</h2></li>
-
+							<li id="playerSkins"><h2>Skins:</h2>
+							<ul>
 							';
+							
+							$sql = 'SELECT usuariocontenido.idusuario,usuariocontenido.idcontenido,contenido.* 
+							FROM usuariocontenido
+							INNER JOIN contenido
+							ON usuariocontenido.idcontenido = contenido.id
+							WHERE usuariocontenido.idusuario = '.$_SESSION["id"].';';
+							
+							$result = $conn->query($sql);
+							if($result->num_rows > 0){
+								//$itemArray = array();
+								while($row = $result->fetch_assoc()){
+									echo '<li item_id = "'.$row["id"].'"><img src="'.$row["img"].'" alt="swingpoplogo" width="80%"></li>';
+									
+									//array_push($itemArray,);
+								}
+							
+							}
+							
+							echo '</ul>
+								</li>';
 						}
 						else{
 							session_destroy(); 
 							header('Location:index.php');
 						}
 					?>
-					
+					<!--
 					<li id="playerSkins"><h2>Skins:</h2>
 						<ul>
 							<li><img src="img/dropItems/backpack.png" alt="swingpoplogo" width="80%"></li>
 							<li><img src="img/dropItems/belt.png" alt="swingpoplogo"  width="80%"></li>
 							<li><img src="img/dropItems/bomb.png" alt="swingpoplogo" width="80%"></li>
-							<li><img src="img/dropItems/backpack.png" alt="swingpoplogo" width="80%"></li>
 						</ul>
-					</li>
+					</li>-->
+					
 				</ul>
 				<div id="settings">
 					<button id="modifyAccount">Delete Account</button>
@@ -98,34 +119,34 @@ include "conexion.php";
 			var doublePendulum = new PenduloDoble(p1,p2,ctx);
 			
 			var gameBackground = $("#gameBackground")[0];
-			//var widthCanvas = $("#myCanvas").attr("width");
-			
-			//barras.initialize(6,6);
+			var itemSelected = $("#playerSkins").find("li").eq(0).children()[0];
 			
 			var gameManager = new GameManager(-400, ctx,canvas.height,canvas.width);
 			gameManager.initialize(7, 6);
-			
-			
-		
-			//var nIntervId;
-			//create gradient
-			//var grd=ctx.createLinearGradient(0,900,0,0);
 			
 			$("#myCanvas").on("click", function(){
 				//cuando se le de click al canvas se soltara una bolita.
 				gameManager.instanceGameBox(p2.GetX(), p2.GetY());
 				//console.log(gameManager.gameBoxes);
 			});
-			var gameOver;
+			
+			$("#playerSkins").find("li").on("click", function(){
+				itemSelected = $(this).children()[0];
+				console.log(itemSelected);
+				
+			});
+			
+			
+			
 			//TRANSLATION -aqui empiezan los calculos del pendulo doble
 			ctx.translate(450,300);
 			
 			var interval = setInterval(function(){ 
 				ctx.clearRect(-450,-300,900,900);
-				
+				//background image
 				ctx.drawImage(gameBackground, -450,-300);
 				doublePendulum.SetPendulumsPos();
-				if(gameManager.gameLoop()){
+				if(gameManager.gameLoop(itemSelected)){
 					$("#restart").css("visibility","visible");
 				}
 				
@@ -145,10 +166,11 @@ include "conexion.php";
 						interval = setInterval(function(){ 
 						ctx.clearRect(-450,-300,900,900);
 						//points
-				
+						ctx.drawImage(gameBackground, -450,-300);
 						doublePendulum.SetPendulumsPos();
-						gameManager.gameLoop();
-						
+						if(gameManager.gameLoop(itemSelected)){
+							$("#restart").css("visibility","visible");
+						}
 						
 						}, 10);
 						
