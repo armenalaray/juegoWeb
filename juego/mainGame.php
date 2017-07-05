@@ -78,6 +78,11 @@ include "conexion.php";
 				</canvas>
 				<button id="restart" >Restart</button>
 				<div id="nextSkin">
+					<?php
+						if($_SESSION['conected'] == true){
+							
+						}
+					?>
 					<div id="nextSkinBlock"><h2><B>100 points</B> to next skin!</h2></div>
 					<div class ="nextSkinImage"><img src="img/dropItems/book.png" alt="swingpoplogo" height="100%" width="100%"></div>
 				</div>

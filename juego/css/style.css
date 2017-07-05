@@ -79,6 +79,7 @@ ul {
     float: left;
     width: 33.333%;
     height: 150px;
+	cursor:pointer;
 }
 #nextSkin {
     display: inline-block;
