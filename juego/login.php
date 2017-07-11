@@ -13,7 +13,7 @@ if( isset($_GET["psw"])){
 include "conexion.php";
 
 $sql = 'SELECT * FROM usuario WHERE email = "'.$email.'" AND password = "'.$psw.'"';
-echo $sql;
+
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {

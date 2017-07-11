@@ -67,6 +67,7 @@ include "conexion.php";
 				<div id="settings">
 					<button id="modifyAccount">Delete Account</button>
 					<button id="modifyAccount">Modify Account</button>
+					<a id="modifyAccount" href="logout.php">Log Out Session</a>
 				</div>
 			</div>
 			<div class="relativo">
@@ -77,21 +78,35 @@ include "conexion.php";
 					Your browser does not support the canvas element.
 				</canvas>
 				<button id="restart" >Restart</button>
+				<div id="itemUnlocked">
+					<b>Congratulations</b> Skin Unlocked!
+					<?php
+					?>
+				</div>
+				
 				<div id="nextSkin">
 					<?php
 						if($_SESSION['conected'] == true){
+							$sql='SELECT * FROM contenido WHERE contenido.score > '.$_SESSION["bestscore"].' LIMIT 1';
 							
+							$result = $conn->query($sql);
+							
+							if($result->num_rows > 0){
+								while($row = $result->fetch_assoc()){
+									echo '<div id="nextSkinBlock"><h2><B><div id="nextScore" style="display: inline-block;">'.$row["score"].'</div> points</B> to next skin!</h2></div>
+					<div class ="nextSkinImage"><img src="'.$row["img"].'" alt="swingpoplogo" height="100%" width="100%"></div>';
+								}
+							}
 						}
 					?>
-					<div id="nextSkinBlock"><h2><B>100 points</B> to next skin!</h2></div>
-					<div class ="nextSkinImage"><img src="img/dropItems/book.png" alt="swingpoplogo" height="100%" width="100%"></div>
+					
 				</div>
 				<div id="audio">
 					<audio controls preload="none">
-					<source src="Audio/Motion.wav" type="audio/wav">	
-					<!--<source src="horse.mp3" type="audio/mpeg">-->
-					Your browser does not support the audio element.
-				</audio>
+						<source src="Audio/Motion.wav" type="audio/wav">	
+						<!--<source src="horse.mp3" type="audio/mpeg">-->
+						Your browser does not support the audio element.
+					</audio>
 				</div>
 				
 			</div>
@@ -137,11 +152,12 @@ include "conexion.php";
 			
 			$("#playerSkins").find("li").on("click", function(){
 				itemSelected = $(this).children()[0];
-				console.log(itemSelected);
+				//console.log(itemSelected);
 				
 			});
 			
-			
+			var nextScore = $("#nextScore").text();
+			console.log(nextScore);
 			
 			//TRANSLATION -aqui empiezan los calculos del pendulo doble
 			ctx.translate(450,300);
@@ -151,7 +167,7 @@ include "conexion.php";
 				//background image
 				ctx.drawImage(gameBackground, -450,-300);
 				doublePendulum.SetPendulumsPos();
-				if(gameManager.gameLoop(itemSelected)){
+				if(gameManager.gameLoop(itemSelected, nextScore)){
 					$("#restart").css("visibility","visible");
 				}
 				
@@ -160,7 +176,7 @@ include "conexion.php";
 			
 			$(document).keypress(function(event){
 				var x = event.which;
-				console.log(x);
+				//console.log(x);
 				if(x==112){
 					if(!isPaused){
 						//triggers pause

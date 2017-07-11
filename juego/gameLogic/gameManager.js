@@ -83,11 +83,11 @@ function GameManager(_xOrigin, _ctx, _canvasHeight, _canvasWidth){
 	};
 
 	
-	this.gameLoop = function(itemSelected){
+	this.gameLoop = function(itemSelected, nextScore){
 		
 		this.drawBoxes(itemSelected);//ui boxes
 		this.boxFall(itemSelected); //movimiento de caja
-		this.drawPoints(); // score
+		this.drawPoints(nextScore); // score
 		this.barras.moveBars();	//movimiento de barras
 		if(gameOver && this.gameBoxes.length == 0 && this.uiBoxes.length == 0){
 			this.gameOver();
@@ -106,10 +106,16 @@ function GameManager(_xOrigin, _ctx, _canvasHeight, _canvasWidth){
 		}
 	};
 	
-	this.drawPoints = function(){
+	this.drawPoints = function(nextScore){
 		//points
 		this.ctx.font = "40px Arial";
 		this.ctx.fillStyle = "red";
+		if(this.score >= nextScore){
+			//logro desbloquear el siguiente item 
+			
+				
+			
+		}
 		this.ctx.fillText(""+ this.score + " Points",250,-230);
 	};
 	
