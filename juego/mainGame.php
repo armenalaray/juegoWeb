@@ -23,8 +23,19 @@ include "conexion.php";
 				
 				<div id="deleteAccountBox">
 					<span id ="deleteText">Are you sure you want to delete your account?</span>
-					<button id="deleteButton">Yes</button>
-					<button id="deleteButton">No</button>
+					<button class="deleteButton">Yes</button>
+					<button class="deleteButton">No</button>
+				</div>
+				<div id="modifyAccountBox">
+					<form action = "#" method="get">
+						<div class = "inputLogin"><input type="text" name="firstname" placeholder="First Name"></div>
+						<div class = "inputLogin"><input type="text" name="lastname" placeholder="Last Name"></div>
+						<div class = "inputLogin"><input type="email" name="email" placeholder="Email"></div>
+						<div class = "inputLogin"><input type="password" name="psw" placeholder="Password"></div>
+						<div class = "sendLogin"><input type = "submit" value="Modify Account"></div>
+						
+					<form>
+					<button class="cancelar">Cancelar</button>
 				</div>
 				<ul>
 					<li id="title"><img src="img/swingpoplogo.png" alt="swingpoplogo" height="50%" width="60%"></li>
@@ -72,9 +83,9 @@ include "conexion.php";
 					
 				</ul>
 				<div id="settings">
-					<button id="modifyAccount" modify_id="1">Delete Account</button>
-					<button id="modifyAccount" modify_id="2">Modify Account</button>
-					<a id="modifyAccount" href="logout.php">Log Out Session</a>
+					<button class="modifyAccount" modify_id="1">Delete Account</button>
+					<button class="modifyAccount" modify_id="2">Modify Account</button>
+					<a class="modifyAccount" href="logout.php">Log Out Session</a>
 				</div>
 				
 				
@@ -87,7 +98,7 @@ include "conexion.php";
 				<canvas id="myCanvas" width="900px" height="900px" style="border:1px solid #c3c3c3;" >
 					Your browser does not support the canvas element.
 				</canvas>
-				<button id="restart" >Restart</button>
+				<div class="btnrestartdiv"><button id="restart" ><a  href="mainGame.php">Restart</a></button></div>
 				<div id="itemUnlocked">
 					<b>Congratulations</b> Skin Unlocked!
 					<?php
@@ -168,7 +179,7 @@ include "conexion.php";
 			});
 			
 			var nextScore = $("#nextScore").text();
-			console.log(nextScore);
+			//console.log(nextScore);
 			
 			//TRANSLATION -aqui empiezan los calculos del pendulo doble
 			ctx.translate(450,300);
@@ -212,7 +223,8 @@ include "conexion.php";
 			});
 			
 			$("#restart").click(function(){
-				location.reload();
+				//alert ("re");
+				//window.location.href("mainGame.php");
 			});
 			/*function getKeyPressed(event){
 				var x = event.which || event.KeyCode;
@@ -222,6 +234,7 @@ include "conexion.php";
 			function pauseGame(){
 				clearInterval(interval);
 			}
+			
 			
 			//var interval2 = setInterval(function(){  }, 10);
 			
