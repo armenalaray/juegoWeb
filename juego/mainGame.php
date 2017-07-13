@@ -17,8 +17,15 @@ include "conexion.php";
 		
 	</head>
 	<body>
+			
 			<div class ="text-align-center sidebar">
 				<!--contenido sidebar-->
+				
+				<div id="deleteAccountBox">
+					<span id ="deleteText">Are you sure you want to delete your account?</span>
+					<button id="deleteButton">Yes</button>
+					<button id="deleteButton">No</button>
+				</div>
 				<ul>
 					<li id="title"><img src="img/swingpoplogo.png" alt="swingpoplogo" height="50%" width="60%"></li>
 					<?php
@@ -65,10 +72,13 @@ include "conexion.php";
 					
 				</ul>
 				<div id="settings">
-					<button id="modifyAccount">Delete Account</button>
-					<button id="modifyAccount">Modify Account</button>
+					<button id="modifyAccount" modify_id="1">Delete Account</button>
+					<button id="modifyAccount" modify_id="2">Modify Account</button>
 					<a id="modifyAccount" href="logout.php">Log Out Session</a>
 				</div>
+				
+				
+				
 			</div>
 			<div class="relativo">
 			<!--<div class="letrero"><h1>Resolucion minima de 960px, favor de redimencionar</h1></div>-->
@@ -122,6 +132,7 @@ include "conexion.php";
 		<script src="gameLogic/barArray.js"></script>
 		<script src="gameLogic/box.js"></script>
 		<script src="gameLogic/gameManager.js"></script>
+		<script src="modifyAccount.js"></script>
 		<script>
 		
 		
