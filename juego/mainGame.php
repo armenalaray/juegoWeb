@@ -27,14 +27,14 @@ include "conexion.php";
 					<button class="deleteButton">No</button>
 				</div>
 				<div id="modifyAccountBox">
-					<form action = "#" method="get">
+					<form action = "modifyAccount.php" method="get">
 						<div class = "inputLogin"><input type="text" name="firstname" placeholder="First Name"></div>
 						<div class = "inputLogin"><input type="text" name="lastname" placeholder="Last Name"></div>
 						<div class = "inputLogin"><input type="email" name="email" placeholder="Email"></div>
 						<div class = "inputLogin"><input type="password" name="psw" placeholder="Password"></div>
 						<div class = "sendLogin"><input type = "submit" value="Modify Account"></div>
 						
-					<form>
+					</form>
 					<button class="cancelar">Cancelar</button>
 				</div>
 				<ul>
@@ -98,7 +98,7 @@ include "conexion.php";
 				<canvas id="myCanvas" width="900px" height="900px" style="border:1px solid #c3c3c3;" >
 					Your browser does not support the canvas element.
 				</canvas>
-				<div class="btnrestartdiv"><button id="restart" ><a  href="mainGame.php">Restart</a></button></div>
+				<a  href="mainGame.php"><div class="btnrestartdiv">Restart</div></a>
 				<div id="itemUnlocked">
 					<b>Congratulations</b> Skin Unlocked!
 					<?php
@@ -179,7 +179,7 @@ include "conexion.php";
 			});
 			
 			var nextScore = $("#nextScore").text();
-			//console.log(nextScore);
+			console.log(nextScore);
 			
 			//TRANSLATION -aqui empiezan los calculos del pendulo doble
 			ctx.translate(450,300);
@@ -190,7 +190,7 @@ include "conexion.php";
 				ctx.drawImage(gameBackground, -450,-300);
 				doublePendulum.SetPendulumsPos();
 				if(gameManager.gameLoop(itemSelected, nextScore)){
-					$("#restart").css("visibility","visible");
+					$(".btnrestartdiv").css("visibility","visible");
 				}
 				
 				

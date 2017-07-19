@@ -112,8 +112,12 @@ function GameManager(_xOrigin, _ctx, _canvasHeight, _canvasWidth){
 		this.ctx.fillStyle = "red";
 		if(this.score >= nextScore){
 			//logro desbloquear el siguiente item 
-			
-				
+			$(document).ready(function(){
+				$("#itemUnlocked").css({
+					"visibility":"visible"
+				});
+			});
+			//TODO:Ajax
 			
 		}
 		this.ctx.fillText(""+ this.score + " Points",250,-230);

@@ -33,6 +33,11 @@ $(document).ready(function(){
 		//console.log($(this).text());
 		if($(this).text() == "Yes"){
 			//TODO:deleteaccount.php
+			$.ajax({url:"deleteAccount.php",type:"GET",
+				success:function(){
+					window.location = "index.php";
+				}
+			});
 		}
 		else{
 			//Redirect 
