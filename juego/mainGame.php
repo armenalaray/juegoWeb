@@ -42,7 +42,7 @@ include "conexion.php";
 					<?php
 						if($_SESSION['conected'] == true){
 							echo '<li id="nombre"><h1><B>Hello '.$_SESSION["nombre"].'</B></h1></li>
-							<li id="bestScore"><h2><B>Best Score:</B> '.$_SESSION["bestscore"].' pts</h2></li>
+							<li id="bestScore"><h2><B>Best Score:</B><span id="bestScoreNumber"> '.$_SESSION["bestscore"].'</span> pts</h2></li>
 							<li id="playerSkins"><h2>Skins:</h2>
 							<ul>
 							';
@@ -87,9 +87,6 @@ include "conexion.php";
 					<button class="modifyAccount" modify_id="2">Modify Account</button>
 					<a class="modifyAccount" href="logout.php">Log Out Session</a>
 				</div>
-				
-				
-				
 			</div>
 			<div class="relativo">
 			<!--<div class="letrero"><h1>Resolucion minima de 960px, favor de redimencionar</h1></div>-->

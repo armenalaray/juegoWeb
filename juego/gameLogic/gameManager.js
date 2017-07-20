@@ -112,8 +112,15 @@ function GameManager(_xOrigin, _ctx, _canvasHeight, _canvasWidth){
 					actualScore:this.score
 				},
 				function(data, status){
+					
+					//TODO:update itemList and NextItem
+					var json = eval(data);
+					console.log(json);
 					alert("Data: " + data + "\nStatus: " + status);
-					//console.log("Data: " + data + "\nStatus: " + status)
+					
+					$("#bestScoreNumber").text(this.score);
+					//$("#nextScore").text();
+					
 				}
 			);
 			

@@ -7,7 +7,7 @@ if(isset($_POST["actualScore"])){
 	$actualScore =json_decode($_POST["actualScore"]);
 }
 
-
+$_SESSION["bestscore"] = $actualScore;
 $sql = 'UPDATE usuario
 SET bestscore = '.$actualScore.'
 WHERE usuario.id = '.$_SESSION["id"].';';
@@ -62,10 +62,21 @@ if ($result->num_rows > 0) {
 		$itemList[$i]=$fila;
 		$i += 1;
 	}
-	echo json_encode($itemList);
+	
 }
 
-//$sql2 = 'SELECT * FROM contenido WHERE contenido.score > '.$actualScore.' LIMIT 1';
+
+
+$sql5 = 'SELECT * FROM contenido WHERE contenido.score > '.$actualScore.' LIMIT 1';
+$result = $conn->query($sql5);
+if ($result->num_rows > 0) {
+	/*significa que si hay un dato existente con ese usuario y contraseña*/
+	while($row = $result->fetch_assoc()) {
+		$fila = array("score"=>$row["score"],"img"=>$row["img"]);
+	}
+	array_push($itemList, $fila);
+	echo json_encode($itemList);
+}
 
 
 
