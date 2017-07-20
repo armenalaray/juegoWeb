@@ -179,7 +179,7 @@ include "conexion.php";
 			});
 			
 			var nextScore = $("#nextScore").text();
-			console.log(nextScore);
+			//console.log(nextScore);
 			
 			//TRANSLATION -aqui empiezan los calculos del pendulo doble
 			ctx.translate(450,300);

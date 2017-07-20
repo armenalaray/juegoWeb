@@ -30,9 +30,9 @@ function GameManager(_xOrigin, _ctx, _canvasHeight, _canvasWidth){
 				this.uiBoxes[i].drawImage(itemSelected);
 			}		
 	};
-	this.boxFall = function(itemSelected){
+	this.boxFall = function(itemSelected, nextScore){
 		if(this.gameBoxes.length != 0){
-			this.checkBoxCatched();
+			this.checkBoxCatched(nextScore);
 			for(var i = 0; i < this.gameBoxes.length; i++){
 				if (this.gameBoxes[i].getY() < canvasHeight){
 					this.gameBoxes[i].movement();
@@ -54,7 +54,7 @@ function GameManager(_xOrigin, _ctx, _canvasHeight, _canvasWidth){
 		//score += 
 	};
 	
-	this.checkBoxCatched = function(){
+	this.checkBoxCatched = function(nextScore){
 		if(this.gameBoxes.length > 0){
 			for (var j = 0; j < this.gameBoxes.length; j++){
 				for(var i = 0; i < this.barras.bars.length; i++){
@@ -64,7 +64,7 @@ function GameManager(_xOrigin, _ctx, _canvasHeight, _canvasWidth){
 							//esta tocando la barra planamente
 							this.score += 10;
 							//se cambia la posicion del gameBoxe
-							
+							this.requestPoints(nextScore);
 							var boxTemp = this.gameBoxes.pop();
 							//boxTemp.setPosition(
 							
@@ -86,8 +86,8 @@ function GameManager(_xOrigin, _ctx, _canvasHeight, _canvasWidth){
 	this.gameLoop = function(itemSelected, nextScore){
 		
 		this.drawBoxes(itemSelected);//ui boxes
-		this.boxFall(itemSelected); //movimiento de caja
-		this.drawPoints(nextScore); // score
+		this.boxFall(itemSelected, nextScore); //movimiento de caja
+		this.drawPoints(); // score
 		this.barras.moveBars();	//movimiento de barras
 		if(gameOver && this.gameBoxes.length == 0 && this.uiBoxes.length == 0){
 			this.gameOver();
@@ -95,6 +95,45 @@ function GameManager(_xOrigin, _ctx, _canvasHeight, _canvasWidth){
 		}
 		return false;
 	}
+	
+	this.requestPoints = function(nextScore){
+		if(this.score >= nextScore){
+			//logro desbloquear el siguiente item 
+			$(document).ready(function(){
+				$("#itemUnlocked").css({
+					"visibility":"visible"
+				});
+			});
+			//TODO:Ajax
+			var actualScore = {"actualScore": this.score};
+			$.post(
+				"getNextItem.php",
+				{
+					actualScore:this.score
+				},
+				function(data, status){
+					alert("Data: " + data + "\nStatus: " + status);
+				}
+			);
+			
+			/*$.ajax({
+				url:"getNextItem.php", data:{data:actualScore},type:"GET", 
+				success:function(result){
+					//var json = eval(result);
+					//console.log(result);
+				},
+				/*error: function(xhr){
+					alert("An error occured: " + xhr.status + " " + xhr.statusText);
+				}
+			});*/
+		}
+	};
+	this.drawPoints = function(){
+		//points
+		this.ctx.font = "40px Arial";
+		this.ctx.fillStyle = "red";
+		this.ctx.fillText(""+ this.score + " Points",250,-230);
+	};
 	
 	this.instanceGameBox = function(x,y){
 		if(this.uiBoxes.length > 0){
@@ -105,28 +144,10 @@ function GameManager(_xOrigin, _ctx, _canvasHeight, _canvasWidth){
 			//console.log(this.gameBoxes);
 		}
 	};
-	
-	this.drawPoints = function(nextScore){
-		//points
-		this.ctx.font = "40px Arial";
-		this.ctx.fillStyle = "red";
-		if(this.score >= nextScore){
-			//logro desbloquear el siguiente item 
-			$(document).ready(function(){
-				$("#itemUnlocked").css({
-					"visibility":"visible"
-				});
-			});
-			//TODO:Ajax
-			
-		}
-		this.ctx.fillText(""+ this.score + " Points",250,-230);
-	};
-	
+
 	this.deleteBox = function(){
 		this.gameBoxes.pop();//elimina el ultimo elemento del arreglo de boxes en el juego
 	};
-	
 	
 	this.gameOver = function(){
 		this.ctx.font = "30px Arial";
