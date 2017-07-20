@@ -175,7 +175,13 @@ include "conexion.php";
 				
 			});
 			
-			var nextScore = $("#nextScore").text();
+			$("#itemUnlocked").on("click",function(){
+				$(this).css({
+					"visibility":"hidden"
+				});
+			});
+			
+			
 			//console.log(nextScore);
 			
 			//TRANSLATION -aqui empiezan los calculos del pendulo doble
@@ -186,7 +192,7 @@ include "conexion.php";
 				//background image
 				ctx.drawImage(gameBackground, -450,-300);
 				doublePendulum.SetPendulumsPos();
-				if(gameManager.gameLoop(itemSelected, nextScore)){
+				if(gameManager.gameLoop(itemSelected)){
 					$(".btnrestartdiv").css("visibility","visible");
 				}
 				

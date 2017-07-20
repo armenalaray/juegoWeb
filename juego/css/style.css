@@ -280,7 +280,9 @@ audio {
     border-radius: 10px;
     text-align: center;
     padding: 77px 10px;
+	cursor:pointer;
 	visibility	:hidden;
+	
 }
 
 
