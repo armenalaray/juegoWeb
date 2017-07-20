@@ -15,7 +15,7 @@ function GameManager(_xOrigin, _ctx, _canvasHeight, _canvasWidth){
 	var uiPosTempX = 0;
 	var uiPosTempY = 0;
 	var gameOver = false;
-	
+	//var itemSelected = "";
 	this.initialize = function(_boxlength,  _barSize){
 		for(var i = 0; i < _boxlength; i++){
 			this.uiBoxes[i] = new Box(_xOrigin + (i * 100), -200,70,70,this.ctx, canvasHeight);
@@ -133,6 +133,8 @@ function GameManager(_xOrigin, _ctx, _canvasHeight, _canvasWidth){
 					}
 					
 					$("#playerSkins > ul").html(temp);
+					
+					
 					//alert("Data: " + data + "\nStatus: " + status);
 					//$("#nextScore").text();
 					

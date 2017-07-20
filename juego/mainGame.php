@@ -57,7 +57,7 @@ include "conexion.php";
 							if($result->num_rows > 0){
 								//$itemArray = array();
 								while($row = $result->fetch_assoc()){
-									echo '<li item_id = "'.$row["id"].'"><img src="'.$row["img"].'" alt="swingpoplogo" width="80%"></li>';
+									echo '<li id="idItem" item_id = "'.$row["id"].'"><img src="'.$row["img"].'" alt="swingpoplogo" width="80%"></li>';
 									
 									//array_push($itemArray,);
 								}
@@ -169,18 +169,22 @@ include "conexion.php";
 				//console.log(gameManager.gameBoxes);
 			});
 			
-			$("#playerSkins").find("li").on("click", function(){
-				itemSelected = $(this).children()[0];
-				//console.log(itemSelected);
-				
-			});
+			
+			
+			/*$("#playerSkins").on("click",function(){
+				$(this).find("li").;
+			});*/
 			
 			$("#itemUnlocked").on("click",function(){
 				$(this).css({
 					"visibility":"hidden"
 				});
 			});
-			
+
+			$("#idItem").on("click", function(){
+					itemSelected = $(this).children()[0];
+					console.log(itemSelected);
+			});
 			
 			//console.log(nextScore);
 			
@@ -188,6 +192,8 @@ include "conexion.php";
 			ctx.translate(450,300);
 			
 			var interval = setInterval(function(){ 
+				
+				
 				ctx.clearRect(-450,-300,900,900);
 				//background image
 				ctx.drawImage(gameBackground, -450,-300);
