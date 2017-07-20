@@ -113,6 +113,7 @@ function GameManager(_xOrigin, _ctx, _canvasHeight, _canvasWidth){
 				},
 				function(data, status){
 					alert("Data: " + data + "\nStatus: " + status);
+					//console.log("Data: " + data + "\nStatus: " + status)
 				}
 			);
 			
