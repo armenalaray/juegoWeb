@@ -117,7 +117,7 @@ function GameManager(_xOrigin, _ctx, _canvasHeight, _canvasWidth){
 					
 					//TODO:update itemList and NextItem
 					var json = eval(data);
-					console.log(json);
+					//console.log(json);
 					
 					
 					$("#nextScore").text(json[json.length - 1].score);
@@ -129,7 +129,7 @@ function GameManager(_xOrigin, _ctx, _canvasHeight, _canvasWidth){
 					$("#bestScoreNumber").text(actualScore);
 					var temp = "";
 					for(var i = 0; i < json.length -1; i+=1){
-						temp += '<li item_id = "'+json[i].id+'"><img src="'+json[i].img+'" alt="swingpoplogo" width="80%"></li>';
+						temp += '<li id="idItem" item_id = "'+json[i].id+'"><img src="'+json[i].img+'" alt="swingpoplogo" width="80%"></li>';
 					}
 					
 					$("#playerSkins > ul").html(temp);
@@ -141,6 +141,7 @@ function GameManager(_xOrigin, _ctx, _canvasHeight, _canvasWidth){
 				}
 			);
 			
+			this.score = 0;
 			/*$.ajax({
 				url:"getNextItem.php", data:{data:actualScore},type:"GET", 
 				success:function(result){

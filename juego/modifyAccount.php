@@ -7,17 +7,17 @@ $lastname = "";
 $email = "";
 $psw = "";
 
-if(isset($_GET["firstname"])){
-	$firstname = $_GET["firstname"];
+if(isset($_POST["firstname"])){
+	$firstname = $_POST["firstname"];
 }
-if(isset($_GET["lastname"])){
-	$lastname = $_GET["lastname"];
+if(isset($_POST["lastname"])){
+	$lastname = $_POST["lastname"];
 }
-if(isset($_GET["email"])){
-	$email = $_GET["email"];
+if(isset($_POST["email"])){
+	$email = $_POST["email"];
 }
-if(isset($_GET["psw"])){
-	$psw = $_GET["psw"];
+if(isset($_POST["psw"])){
+	$psw = $_POST["psw"];
 }
 
 $sql = 'UPDATE usuario
@@ -31,6 +31,9 @@ if ($conn->query($sql) === TRUE) {
 else {
 	echo "Error: " . $sql . "<br>" . $conn->error;
 }
+
+
+
 
 header('Location:mainGame.php');
 

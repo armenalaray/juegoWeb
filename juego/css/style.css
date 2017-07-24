@@ -75,6 +75,8 @@ ul {
     display: inline-block;
     width: 100%;
     height: initial;
+    overflow-y: auto;
+    height: 354px;
 }
 #playerSkins h2{
 	margin:0px;
@@ -339,9 +341,9 @@ audio {
     height: 39px;
     background-color: #f54141;
     margin: 1% 25%;
-	border: 2px solid #f54141;
+    border: 2px solid #f54141;
     border-radius: 10px;
-
+    cursor: pointer;
 }
 
 .cancelar{
@@ -356,9 +358,9 @@ audio {
     border-radius: 10px;
 }
 
-#createAccount{
-	margin-top:90px;
-	position: absolute;
+#createAccount {
+    margin-top: 90px;
+    position: absolute;
     left: 0px;
     right: 0px;
     margin-left: auto;
@@ -368,8 +370,9 @@ audio {
     font-size: 20px;
     height: 39px;
     background-color: #f54141;
-	border: 2px solid #f54141;
+    border: 2px solid #f54141;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 
