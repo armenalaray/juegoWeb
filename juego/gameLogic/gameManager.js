@@ -60,7 +60,7 @@ function GameManager(_xOrigin, _ctx, _canvasHeight, _canvasWidth){
 				for(var i = 0; i < this.barras.bars.length; i++){
 					if((this.gameBoxes[j].y0 + this.gameBoxes[j].height)>= this.barras.bars[i].y0 && (this.gameBoxes[j].y0 + this.gameBoxes[j].height) < canvasHeight - 300){
 						//la caja esta a la altura de la barra
-						if(this.gameBoxes[j].x0 >= this.barras.bars[i].x0 && this.gameBoxes[j].x0 <= (this.barras.bars[i].x0 + this.barras.bars[i].length)){
+						if(this.gameBoxes[j].x0 + (this.barras.bars[i].length / 2)>= this.barras.bars[i].x0 && this.gameBoxes[j].x0 <= (this.barras.bars[i].x0 + this.barras.bars[i].length)){
 							//esta tocando la barra planamente
 							this.score += 10;
 							//se cambia la posicion del gameBoxe

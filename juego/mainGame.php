@@ -27,13 +27,13 @@ include "conexion.php";
 					<button class="deleteButton">No</button>
 				</div>
 				<div id="modifyAccountBox">
-					<form action="" type="POST">
+						<span class="wBlankSpaces">Debes de llenar todos los espacios</span>
 						<div class = "inputLogin"><input id="firstName" type="text" name="firstname" placeholder="First Name" required></div>
 						<div class = "inputLogin"><input id="lastName" type="text" name="lastname" placeholder="Last Name" required></div>
 						<div class = "inputLogin"><input id="email" type="email" name="email" placeholder="Email" required></div>
 						<div class = "inputLogin"><input id="psw" type="password" name="psw" placeholder="Password" required></div>
 						<div class = "sendLogin"><input type = "submit" value="Modify Account"></div>
-					</form>
+					
 					<button class="cancelar">Cancelar</button>
 				</div>
 				<ul>
@@ -146,7 +146,7 @@ include "conexion.php";
 		$(document).ready(function(){
 			$("#audio").trigger('load');
 			
-			//$("#audio").trigger('play');
+			$("#audio").trigger('play');
 			var canvas = $("#myCanvas")[0];
 			var ctx = canvas.getContext('2d');
 			var isPaused = false;
@@ -176,34 +176,10 @@ include "conexion.php";
 
 			$("#playerSkins").on("click","#idItem",function(){
 					itemSelected = $(this).children()[0];
-					console.log(itemSelected);
+					//console.log(itemSelected);
 			});
 			
-			$(".sendLogin > :submit").on("click",function(){
-				var firstName = $("#firstName").val();
-				var lastName = $("#lastName").val();
-				var email = $("#email").val();
-				var psw = $("#psw").val();
-				if(firstName != "" && lastName != "" && email != "" && psw != ""){
-					$post(
-					"modifyAccount.php",
-					{
-						firstname : firstName,
-						lastname: lastName,
-						email: email,
-						psw: psw
-					},
-					function(data, status){
-						var json = eval(data);
-						
-						
-					}
-					);
-				}
-				else{
-					
-				}
-			});
+			
 			
 			//TRANSLATION -aqui empiezan los calculos del pendulo doble
 			ctx.translate(450,300);
@@ -233,14 +209,13 @@ include "conexion.php";
 					}
 					else{
 						interval = setInterval(function(){ 
-						ctx.clearRect(-450,-300,900,900);
-						//points
-						ctx.drawImage(gameBackground, -450,-300);
-						doublePendulum.SetPendulumsPos();
-						if(gameManager.gameLoop(itemSelected)){
-							$("#restart").css("visibility","visible");
-						}
-						
+							ctx.clearRect(-450,-300,900,900);
+							//background image
+							ctx.drawImage(gameBackground, -450,-300);
+							doublePendulum.SetPendulumsPos();
+							if(gameManager.gameLoop(itemSelected)){
+								$(".btnrestartdiv").css("visibility","visible");
+							}
 						}, 10);
 						
 					}

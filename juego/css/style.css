@@ -192,7 +192,12 @@ ul {
     display: none;
 }
 
-
+.wBlankSpaces {
+    background-color: #f54141;
+    display: block;
+    font-size: 1.3em;
+	visibility:hidden;
+}
 
 
 #audio {
